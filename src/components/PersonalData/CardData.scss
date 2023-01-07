@@ -1,0 +1,79 @@
+@use '../../styles/colors' as *;
+
+%input-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: $color-dark-purple;
+}
+
+.temporary-container {
+  max-width: 327px;
+  margin: 0 auto;
+}
+
+.card-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 11px; // Mobile
+
+  &__label {
+    display: block;
+    margin-bottom: 9px;
+
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 15px;
+    color: $color-dark-purple;
+  }
+
+  &__input-wrapper {
+    height: 45px;
+    padding: 1px;
+    margin-bottom: 20px; // Mobile
+
+    border-radius: 8px;
+    // background: linear-gradient(163.95deg, #6348FE 4.74%, #610595 88.83%);
+    background: $color-light-gray; // Not-focused
+
+    &--full-width {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__input {
+    height: 43px;
+    width: 100%;
+    padding-left: 16px;
+
+    border-radius: 8px;
+
+    @extend %input-text;
+
+    &::placeholder {
+      @extend %input-text;
+      opacity: 0.25;
+    }
+  }
+
+  &__date-wrapper {
+    grid-column: 1 / 2;
+  }
+
+  &__date-inputs {
+    display: flex;
+    gap: 8px; // Mobile
+  }
+
+  &__btn {
+    grid-column: 1 / -1;
+
+    height: 53px;
+    border-radius: 8px;
+
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-main;
+    background: $color-dark-purple;
+  }
+}
