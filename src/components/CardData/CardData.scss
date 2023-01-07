@@ -30,7 +30,6 @@
   &__input-wrapper {
     height: 45px;
     padding: 1px;
-    margin-bottom: 20px; // Mobile
 
     border-radius: 8px;
     // background: linear-gradient(163.95deg, #6348FE 4.74%, #610595 88.83%);
@@ -38,6 +37,7 @@
 
     &--full-width {
       grid-column: 1 / -1;
+      margin-bottom: 20px; // Mobile
     }
   }
 
@@ -58,6 +58,7 @@
 
   &__date-wrapper {
     grid-column: 1 / 2;
+    margin-bottom: 28px;
   }
 
   &__date-inputs {
