@@ -1,10 +1,23 @@
 @use "./colors" as *;
 @use "./variables" as *;
+@use "./mixins" as *;
 
 %card-shape {
-  width: $card-width; // Mobile
-  height: $card-height; // Mobile
-  border-radius: 6px; // Mobile
+  width: $card-width;
+  height: $card-height;
+  border-radius: 6px;
+
+  @include onTablet {
+    width: $card-width--tablet;
+    height: $card-height--tablet;
+    border-radius: 8px;
+  }
+
+  @include onDesktop {
+    width: $card-width--desktop;
+    height: $card-height--desktop;
+    border-radius: 10px;
+  }
 }
 
 %card-small-text {
@@ -12,4 +25,14 @@
   font-weight: 500;
   letter-spacing: 1.3px; // Mobile
   color: $color-main;
+
+  @include onTablet {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+  }
+
+  @include onDesktop {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
 }

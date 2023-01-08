@@ -3,3 +3,15 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}

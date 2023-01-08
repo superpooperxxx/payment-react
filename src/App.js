@@ -1,14 +1,21 @@
 import './App.scss';
 import { BackCard } from './components/BackCard/BackCard';
-import { PersonalData } from './components/CardData/CardData';
+import { CardData } from './components/CardData/CardData';
 import { FrontCard } from './components/FrontCard/FrontCard';
 
 function App() {
   return (
     <section className='payment-section'>
-      <FrontCard />
-      <BackCard />
-      <PersonalData />
+      <div className="payment-section__container">
+        <div className="payment-section__cards">
+          <BackCard />
+          <FrontCard />
+        </div>
+
+        <div className="payment-section__form-wrapper">
+          <CardData />
+        </div>
+      </div>
     </section>
   );
 }

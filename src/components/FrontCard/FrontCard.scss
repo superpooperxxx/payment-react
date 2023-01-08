@@ -1,9 +1,7 @@
 @use "../../styles/colors" as *;
 @use "../../styles/mixins" as *;
 @use "../../styles/placeholders" as *;
-
-$card-width: 286px; // Mobile
-$card-height: 157px; // Mobile
+@use "../../styles/variables" as *;
 
 .front-card {
   display: flex;
@@ -12,22 +10,52 @@ $card-height: 157px; // Mobile
 
   @extend %card-shape;
   
-  padding: 20px; // Mobile
+  padding: 20px;
+
+  @include onTablet {
+    padding: 24px;
+  }
+
+  @include onDesktop {
+    padding: 26px;
+  }
 
   @include card-background("../../assets/bg-card-front.png");
 
   &__logo {
-    width: 54px; // Mobile
+    width: 54px;
+
+    @include onTablet {
+      width: 70px;
+    }
+
+    @include onDesktop {
+      width: 84px;
+    }
   }
 
   &__number {
-    margin-bottom: 17px; // Mobile
+    margin-bottom: 17px;
 
-    font-size: 18px; // Mobile
+    font-size: 18px;
     font-weight: 500;
-    letter-spacing: 2.2px; // Mobile
+    letter-spacing: 2.2px;
 
     color: $color-main;
+
+    @include onTablet {
+      margin-bottom: 21px;
+
+      font-size: 23px;
+      letter-spacing: 2.8px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 25px;
+
+      font-size: 28px;
+      letter-spacing: 3.4px;
+    }
   }
 
   &__bottom {

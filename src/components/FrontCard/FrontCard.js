@@ -3,7 +3,7 @@ import cardLogo from "../../assets/card-logo.svg"
 
 export const FrontCard = () => {
   return (
-    <div className="front-card">
+    <div className="front-card payment-section__front-card">
       <img 
         src={cardLogo}
         alt="" 
