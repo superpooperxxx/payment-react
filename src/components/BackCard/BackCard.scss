@@ -1,0 +1,22 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/placeholders" as *;
+
+$card-width: 286px; // Mobile
+$card-height: 157px; // Mobile
+
+.back-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @extend %card-shape;
+
+  padding-right: 37px;
+
+  @include card-background("../../assets/bg-card-back.png");
+
+  &__cvc {
+    @extend %card-small-text;
+  }
+}

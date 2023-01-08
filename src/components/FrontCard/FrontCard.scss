@@ -1,49 +1,20 @@
 @use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/placeholders" as *;
 
 $card-width: 286px; // Mobile
 $card-height: 157px; // Mobile
 
-%bottom-text {
-  font-size: 9px;  // Mobile
-  font-weight: 500;
-  letter-spacing: 1.3px; // Mobile
-  color: $color-main;
-}
-
-@mixin card-background($url) {
-  background-image: url($url);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 .front-card {
-  position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  width: $card-width; // Mobile
-  height: $card-height; // Mobile
+  @extend %card-shape;
+  
   padding: 20px; // Mobile
 
-  border-radius: 6px; // Mobile
-
   @include card-background("../../assets/bg-card-front.png");
-
-  &::after {
-    content: "";
-
-    position: absolute;
-    top: -94px; // Mobile
-    left: 57px; // Mobile
-    z-index: -1;
-
-    width: $card-width;
-    height: $card-height;
-
-    @include card-background("../../assets/bg-card-back.png");
-  }
 
   &__logo {
     width: 54px; // Mobile
@@ -66,11 +37,11 @@ $card-height: 157px; // Mobile
   }
 
   &__owner {
-    @extend %bottom-text;
+    @extend %card-small-text;
     text-transform: uppercase;
   }
 
   &__expiration {
-    @extend %bottom-text;
+    @extend %card-small-text;
   }
 }
