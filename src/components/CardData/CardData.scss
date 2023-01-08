@@ -32,8 +32,11 @@
     padding: 1px;
 
     border-radius: 8px;
-    // background: linear-gradient(163.95deg, #6348FE 4.74%, #610595 88.83%);
-    background: $color-light-gray; // Not-focused
+    background: $color-light-gray;
+
+    &:focus-within {
+      background: linear-gradient(163.95deg, #6348FE 4.74%, #610595 88.83%);
+    }
 
     &--full-width {
       grid-column: 1 / -1;
@@ -50,7 +53,9 @@
     width: 100%;
     padding-left: 16px;
 
-    border-radius: 8px;
+    border-radius: 7px;
+
+    background: $color-main;
 
     @extend %input-text;
 

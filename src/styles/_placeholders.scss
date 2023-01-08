@@ -7,6 +7,8 @@
   height: $card-height;
   border-radius: 6px;
 
+  filter: drop-shadow(0px 39px 60px rgba(0, 0, 0, 0.142481));
+
   @include onTablet {
     width: $card-width--tablet;
     height: $card-height--tablet;
@@ -21,9 +23,9 @@
 }
 
 %card-small-text {
-  font-size: 9px; // Mobile
+  font-size: 9px;
   font-weight: 500;
-  letter-spacing: 1.3px; // Mobile
+  letter-spacing: 1.3px;
   color: $color-main;
 
   @include onTablet {

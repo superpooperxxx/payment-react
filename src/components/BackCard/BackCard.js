@@ -1,9 +1,9 @@
 import './BackCard.scss';
 
-export const BackCard = () => {
+export const BackCard = ({ cardCvc }) => {
   return (
     <div className="back-card payment-section__back-card">
-      <p className="back-card__cvc">000</p>
+      <p className="back-card__cvc">{ cardCvc }</p>
     </div>
   );
 };
