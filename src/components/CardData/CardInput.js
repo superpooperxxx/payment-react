@@ -3,17 +3,40 @@ import { shrinkCardNumber } from '../../utils/handleCardNumber';
 import { formatCardOwner } from '../../utils/handleCardOwner';
 
 export const CardInput = ({
-  fullWidth,
+  error,
   name,
   placeholder,
   maxLength,
   value,
-  updateCardData
+  updateCardData,
+  setError,
 }) => {
+  const inputIsValid = (name, value) => {
+    switch (name) {
+      case 'cardOwner':
+        return [
+          ![...value].some(elem => elem !== ' ' && Number.isInteger(+elem)),
+          'Wrong format, letters only',
+        ];
+      default:
+        return [
+          [...value].every(elem => Number.isInteger(+elem)),
+          'Wrong format, numbers only',
+        ];
+    }
+  };
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
+
+    const [isValidInput, errorMessage] = inputIsValid(name, value);
+
+    if (!isValidInput) {
+      setError(name, errorMessage);
+    } else {
+      setError(name, '');
+    }
 
     switch (name) {
       case 'cardNumber':
@@ -33,7 +56,7 @@ export const CardInput = ({
     <div className={classNames(
       "card-data__input-wrapper",
       {
-        "card-data__input-wrapper--full-width": fullWidth,
+        "card-data__input-wrapper--invalid": error,
       }
     )}>
       <input

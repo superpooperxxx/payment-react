@@ -23,5 +23,7 @@
 
   &__cvc {
     @extend %card-small-text;
+
+    transform: translateY(-15%);
   }
 }

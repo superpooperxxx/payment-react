@@ -4,9 +4,24 @@ import { formatCardNumber } from '../../utils/handleCardNumber';
 import './CardData.scss';
 
 export class CardData extends Component {
+  state = {
+    cardNumberError: '',
+    cardOwnerError: '',
+    cardMonthError: '',
+    cardYearError: '',
+    cardCvcError: '', 
+  }
+
+  setError = (name, errorMessage) => {
+    console.log('setting error to ' + [name + 'Error']);
+
+    this.setState({
+      [name + 'Error']: errorMessage,
+    })
+  }
+
   render() {
     const { updateCardData, cardData } = this.props;
-
     const {
       cardNumber,
       cardOwner,
@@ -15,63 +30,101 @@ export class CardData extends Component {
       cardCvc,
     } = cardData;
 
+    const {
+      cardOwnerError,
+      cardNumberError,
+      cardMonthError,
+      cardYearError,
+      cardCvcError,
+    } = this.state;
+
     return (
       <form
         action="#"
         method="post"
         className="card-data"
       >
-        <label className="card-data__label">Cardholder name</label>
-        <CardInput 
-          fullWidth={true}
-          name="cardOwner"
-          placeholder="e.g. Jane Appleseed"
-          maxLength="22"
-          value={cardOwner} // Нужно форматирование
-          updateCardData={updateCardData}
-        />
+        <div className="card-data__section">
+          <label className="card-data__label">Cardholder name</label>
+          <CardInput
+            error={Boolean(cardOwnerError)}
+            name="cardOwner"
+            placeholder="e.g. Jane Appleseed"
+            maxLength="22"
+            value={cardOwner}
+            updateCardData={updateCardData}
+            setError={this.setError}
+          />
+          
+          {cardOwnerError && (
+            <p className="card-data__error">{ cardOwnerError }</p>
+          )}
+        </div>
   
-        <label className="card-data__label">Card number</label>
-        <CardInput 
-          fullWidth={true}
-          name="cardNumber"
-          placeholder="e.g. 1234 5678 9123 0000"
-          maxLength="19"
-          value={formatCardNumber(cardNumber)}
-          updateCardData={updateCardData}
-        />
+        <div className="card-data__section">
+          <label className="card-data__label">Card number</label>
+          <CardInput
+            error={Boolean(cardNumberError)}
+            name="cardNumber"
+            placeholder="e.g. 1234 5678 9123 0000"
+            maxLength="19"
+            value={formatCardNumber(cardNumber)}
+            updateCardData={updateCardData}
+            setError={this.setError}
+          />
+
+          {cardNumberError && (
+            <p className="card-data__error">{ cardNumberError }</p>
+          )}
+        </div>
   
         <div className="card-data__date-wrapper">
           <label className="card-data__label">Exp. Date (MM/YY)</label>
   
           <div className="card-data__date-inputs">
-            <CardInput 
+            <CardInput
+              error={Boolean(cardMonthError)}
               name="cardMonth"
               placeholder="MM"
               maxLength="2"
               value={cardMonth}
               updateCardData={updateCardData}
+              setError={this.setError}
             />
 
-            <CardInput 
+            <CardInput
+              error={Boolean(cardYearError)}
               name="cardYear"
               placeholder="YY"
               maxLength="2"
               value={cardYear}
               updateCardData={updateCardData}
+              setError={this.setError}
             />
           </div>
+          
+          {(cardMonthError || cardYearError) && (
+            <p className="card-data__error">
+              { cardMonthError || cardYearError }
+            </p>
+          )}
         </div>
   
         <div className="card-data__cvc-wrapper">
           <label className="card-data__label">Cvc</label>
-          <CardInput 
+          <CardInput
+            error={Boolean(cardCvcError)}
             name="cardCvc"
             placeholder="e.g. 123"
             maxLength="3"
             value={cardCvc}
             updateCardData={updateCardData}
+            setError={this.setError}
           />
+          
+          {cardCvcError && (
+            <p className="card-data__error">{ cardCvcError }</p>
+          )}
         </div>
   
         <button type="button" className="card-data__btn">
