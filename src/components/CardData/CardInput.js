@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+import { shrinkCardNumber } from '../../utils/handleCardNumber';
+import { formatCardOwner } from '../../utils/handleCardOwner';
 
 export const CardInput = ({
   fullWidth,
@@ -6,8 +8,26 @@ export const CardInput = ({
   placeholder,
   maxLength,
   value,
-  onChange
+  updateCardData
 }) => {
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    switch (name) {
+      case 'cardNumber':
+        updateCardData(name, shrinkCardNumber(value));
+        break;
+
+      case 'cardOwner':
+        updateCardData(name, formatCardOwner(value));
+        break;
+
+      default:
+        updateCardData(name, value.trim());
+    }
+  };
 
   return (
     <div className={classNames(
@@ -23,8 +43,9 @@ export const CardInput = ({
         name={name}
         placeholder={placeholder}
         maxLength={maxLength}
+
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </div>
   );

@@ -1,34 +1,19 @@
 import { Component } from 'react';
 import { CardInput } from './CardInput';
+import { formatCardNumber } from '../../utils/handleCardNumber';
 import './CardData.scss';
 
 export class CardData extends Component {
-  state = {
-    cardOwner: '',
-    cardNumber: '',
-    cardMonth: '',
-    cardYear: '',
-    cardCvc: '',
-  };
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-
-    this.props.getCardData(name, value);
-    
-    this.setState({
-      [name]: value,
-    })
-  };
-
   render() {
+    const { updateCardData, cardData } = this.props;
+
     const {
-      cardOwner,
       cardNumber,
+      cardOwner,
       cardMonth,
       cardYear,
-      cardCvc
-    } = this.state;
+      cardCvc,
+    } = cardData;
 
     return (
       <form
@@ -41,8 +26,9 @@ export class CardData extends Component {
           fullWidth={true}
           name="cardOwner"
           placeholder="e.g. Jane Appleseed"
-          value={cardOwner}
-          onChange={this.handleChange}
+          maxLength="22"
+          value={cardOwner} // Нужно форматирование
+          updateCardData={updateCardData}
         />
   
         <label className="card-data__label">Card number</label>
@@ -50,8 +36,9 @@ export class CardData extends Component {
           fullWidth={true}
           name="cardNumber"
           placeholder="e.g. 1234 5678 9123 0000"
-          value={cardNumber}
-          onChange={this.handleChange}
+          maxLength="19"
+          value={formatCardNumber(cardNumber)}
+          updateCardData={updateCardData}
         />
   
         <div className="card-data__date-wrapper">
@@ -63,7 +50,7 @@ export class CardData extends Component {
               placeholder="MM"
               maxLength="2"
               value={cardMonth}
-              onChange={this.handleChange}
+              updateCardData={updateCardData}
             />
 
             <CardInput 
@@ -71,7 +58,7 @@ export class CardData extends Component {
               placeholder="YY"
               maxLength="2"
               value={cardYear}
-              onChange={this.handleChange}
+              updateCardData={updateCardData}
             />
           </div>
         </div>
@@ -83,11 +70,13 @@ export class CardData extends Component {
             placeholder="e.g. 123"
             maxLength="3"
             value={cardCvc}
-            onChange={this.handleChange}
+            updateCardData={updateCardData}
           />
         </div>
   
-        <button type="button" className="card-data__btn">Confirm</button>
+        <button type="button" className="card-data__btn">
+          Confirm
+        </button>
       </form>
     );
   }

@@ -6,14 +6,14 @@ import { FrontCard } from './components/FrontCard/FrontCard';
 
 export class App extends Component {
   state = {
-    cardNumber: '0000 0000 0000 0000',
-    cardOwner: 'Jane Appleseed',
-    cardMonth: '00',
-    cardYear: '00',
-    cardCvc: '000',
+    cardNumber: '',
+    cardOwner: '',
+    cardMonth: '',
+    cardYear: '',
+    cardCvc: '',
   };
 
-  getCardData = (name, value) => {
+  updateCardData = (name, value) => {
     this.setState({
       [name]: value,
     })
@@ -41,7 +41,10 @@ export class App extends Component {
           </div>
   
           <div className="payment-section__form-wrapper">
-            <CardData getCardData={this.getCardData} />
+            <CardData 
+              updateCardData={this.updateCardData}
+              cardData={this.state}
+            />
           </div>
         </div>
       </section>
