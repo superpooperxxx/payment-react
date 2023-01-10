@@ -2,10 +2,12 @@ import { Component } from 'react';
 import './App.scss';
 import { BackCard } from './components/BackCard/BackCard';
 import { CardData } from './components/CardData/CardData';
+import { DataSent } from './components/DataSent/DataSent';
 import { FrontCard } from './components/FrontCard/FrontCard';
 
 export class App extends Component {
   state = {
+    cardDataWasSent: false,
     cardNumber: '',
     cardOwner: '',
     cardMonth: '',
@@ -20,7 +22,8 @@ export class App extends Component {
   }
 
   render () {
-    const { 
+    const {
+      cardDataWasSent,
       cardNumber,
       cardOwner,
       cardMonth,
@@ -41,10 +44,15 @@ export class App extends Component {
           </div>
   
           <div className="payment-section__form-wrapper">
-            <CardData 
-              updateCardData={this.updateCardData}
-              cardData={this.state}
-            />
+            {!cardDataWasSent 
+              ? (
+                  <CardData 
+                    updateCardData={this.updateCardData}
+                    cardData={this.state}
+                  />
+                )
+              : <DataSent />
+            }
           </div>
         </div>
       </section>

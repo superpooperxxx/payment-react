@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { CardInput } from './CardInput';
 import { formatCardNumber } from '../../utils/handleCardNumber';
+import { hasErrorsInForm, validateCardData } from '../../utils/handleFormValidation';
 import './CardData.scss';
 
 export class CardData extends Component {
@@ -13,12 +14,29 @@ export class CardData extends Component {
   }
 
   setError = (name, errorMessage) => {
-    console.log('setting error to ' + [name + 'Error']);
-
     this.setState({
       [name + 'Error']: errorMessage,
     })
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { cardData, updateCardData } = this.props;
+
+    if (!hasErrorsInForm(this.state)) {
+      const cardDataErrors = validateCardData(cardData);
+
+      if (cardDataErrors.length === 0) {
+        updateCardData('cardDataWasSent', true);
+      } else {
+        for (const error of cardDataErrors) {
+          const [name, errorMessage] = error;
+          this.setError(name, errorMessage);
+        }
+      }
+    }
+  };
 
   render() {
     const { updateCardData, cardData } = this.props;
@@ -43,6 +61,7 @@ export class CardData extends Component {
         action="#"
         method="post"
         className="card-data"
+        onSubmit={this.handleSubmit}
       >
         <div className="card-data__section">
           <label className="card-data__label">Cardholder name</label>
@@ -127,7 +146,7 @@ export class CardData extends Component {
           )}
         </div>
   
-        <button type="button" className="card-data__btn">
+        <button type="submit" className="card-data__btn">
           Confirm
         </button>
       </form>

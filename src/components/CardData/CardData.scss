@@ -1,5 +1,6 @@
 @use '../../styles/colors' as *;
 @use '../../styles/mixins' as *;
+@use '../../styles/placeholders' as *;
 
 %input-text {
   font-size: 18px;
@@ -111,12 +112,6 @@
   &__btn {
     grid-column: 1 / -1;
 
-    height: 53px;
-    border-radius: 8px;
-
-    font-size: 18px;
-    font-weight: 500;
-    color: $color-main;
-    background: $color-dark-purple;
+    @extend %main-button;
   }
 }

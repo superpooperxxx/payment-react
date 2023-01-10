@@ -1,0 +1,38 @@
+@use "../../styles/colors" as *;
+@use '../../styles/placeholders' as *;
+
+.data-sent {
+
+  &__img {
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 35px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3.4px;
+    color: $color-dark-purple;
+  }
+
+  &__text {
+    margin-bottom: 50px;
+
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-dark-gray;
+  }
+
+  &__btn {
+    width: 100%;
+    @extend %main-button;
+  }
+}

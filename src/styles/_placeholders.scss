@@ -2,12 +2,22 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
+%main-button {
+  height: 53px;
+  border-radius: 8px;
+
+  font-size: 18px;
+  font-weight: 500;
+  color: $color-main;
+  background: $color-dark-purple;
+}
+
 %card-shape {
   width: $card-width;
   height: $card-height;
   border-radius: 6px;
 
-  filter: drop-shadow(0px 39px 60px rgba(0, 0, 0, 0.142481));
+  box-shadow: 0px 39px 60px rgba(0, 0, 0, 0.15);
 
   @include onTablet {
     width: $card-width--tablet;
