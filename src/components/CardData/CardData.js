@@ -64,7 +64,10 @@ export class CardData extends Component {
         onSubmit={this.handleSubmit}
       >
         <div className="card-data__section">
-          <label className="card-data__label">Cardholder name</label>
+          <label htmlFor="cardOwner" className="card-data__label">
+            Cardholder name
+          </label>
+
           <CardInput
             error={Boolean(cardOwnerError)}
             name="cardOwner"
@@ -81,7 +84,10 @@ export class CardData extends Component {
         </div>
   
         <div className="card-data__section">
-          <label className="card-data__label">Card number</label>
+          <label htmlFor="cardNumber" className="card-data__label">
+            Card number
+          </label>
+
           <CardInput
             error={Boolean(cardNumberError)}
             name="cardNumber"
@@ -98,7 +104,9 @@ export class CardData extends Component {
         </div>
   
         <div className="card-data__date-wrapper">
-          <label className="card-data__label">Exp. Date (MM/YY)</label>
+          <label htmlFor="cardMonth" className="card-data__label">
+            Exp. Date (MM/YY)
+          </label>
   
           <div className="card-data__date-inputs">
             <CardInput
@@ -130,7 +138,10 @@ export class CardData extends Component {
         </div>
   
         <div className="card-data__cvc-wrapper">
-          <label className="card-data__label">Cvc</label>
+          <label htmlFor="cardCvc" className="card-data__label">
+            Cvc
+          </label>
+
           <CardInput
             error={Boolean(cardCvcError)}
             name="cardCvc"

@@ -60,6 +60,7 @@ export const CardInput = ({
       }
     )}>
       <input
+        id={name}
         type="text"
         className="card-data__input"
 
