@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { shrinkCardNumber } from '../../utils/handleCardNumber';
 import { formatCardOwner } from '../../utils/handleCardOwner';
+import { inputIsValid } from '../../utils/handleFormValidation';
 
 export const CardInput = ({
   error,
@@ -11,21 +12,6 @@ export const CardInput = ({
   updateCardData,
   setError,
 }) => {
-  const inputIsValid = (name, value) => {
-    switch (name) {
-      case 'cardOwner':
-        return [
-          ![...value].some(elem => elem !== ' ' && Number.isInteger(+elem)),
-          'Wrong format, letters only',
-        ];
-      default:
-        return [
-          [...value].every(elem => Number.isInteger(+elem)),
-          'Wrong format, numbers only',
-        ];
-    }
-  };
-
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;

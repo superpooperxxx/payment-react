@@ -25,3 +25,18 @@ export const validateCardData = (cardData) => {
 
   return errors;
 };
+
+export const inputIsValid = (name, value) => {
+  switch (name) {
+    case 'cardOwner':
+      return [
+        ![...value].some(elem => elem !== ' ' && Number.isInteger(+elem)),
+        'Wrong format, letters only',
+      ];
+    default:
+      return [
+        [...value].every(elem => Number.isInteger(+elem)),
+        'Wrong format, numbers only',
+      ];
+  }
+};
