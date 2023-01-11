@@ -23,7 +23,7 @@ export const FrontCard = (props) => {
             { cardOwner || 'Jane Appleseed' }
           </p>
           <p className="front-card__expiration">
-            { `${cardMonth || '00'}/${cardYear || '00'}` }
+            { `${cardMonth.padStart(2, 0) || '00'}/${cardYear.padStart(2, 0) || '00'}` }
           </p>
         </div>
       </div>

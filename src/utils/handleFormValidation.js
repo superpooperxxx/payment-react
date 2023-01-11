@@ -12,6 +12,9 @@ export const validateCardData = (cardData) => {
   };
   const errors = [];
   const cardDataArray = Object.entries(cardData).slice(1);
+  const currentDate = new Date();
+  const currentYear = String(currentDate.getFullYear()).slice(2);
+  const currentMonth = currentDate.getMonth() + 1;
 
   for (const [name, value] of cardDataArray) {
     if (value === '') {
@@ -20,7 +23,20 @@ export const validateCardData = (cardData) => {
       if (value.length < lengths[name]) {
         errors.push([name, `Min length is ${lengths[name]}`]);
       }
+
+      if (name === 'cardMonth' && (Number(value) < 1 || Number(value) > 12)) {
+        errors.push([name, 'Invalid Month']);
+      }
+
+      if (name === 'cardYear' && +value < currentYear) {
+        errors.push([name, 'Card has expired']);
+      }
     }
+
+    // if (+cardData['cardMonth'] < currentMonth && +cardData['cardYear'] < currentYear) {
+    //   errors.push([cardData['cardMonth'], 'Card has expired']);
+    //   errors.push([cardData['cardYear'], 'Card has expired']);
+    // }
   }
 
   return errors;
