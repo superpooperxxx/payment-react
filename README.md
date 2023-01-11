@@ -26,7 +26,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](https://prnt.sc/SaSjAMMsAbwC)
+![]("./demo.png")
 
 
 ### Links
