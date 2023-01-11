@@ -69,6 +69,7 @@
 
     background: $color-main;
 
+    font-family: 'Space Grotesk', sans-serif;
     @extend %input-text;
 
     &::placeholder {

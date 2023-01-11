@@ -14,7 +14,7 @@ export const validateCardData = (cardData) => {
   const cardDataArray = Object.entries(cardData).slice(1);
   const currentDate = new Date();
   const currentYear = String(currentDate.getFullYear()).slice(2);
-  const currentMonth = currentDate.getMonth() + 1;
+  // const currentMonth = currentDate.getMonth() + 1;
 
   for (const [name, value] of cardDataArray) {
     if (value === '') {
@@ -32,11 +32,6 @@ export const validateCardData = (cardData) => {
         errors.push([name, 'Card has expired']);
       }
     }
-
-    // if (+cardData['cardMonth'] < currentMonth && +cardData['cardYear'] < currentYear) {
-    //   errors.push([cardData['cardMonth'], 'Card has expired']);
-    //   errors.push([cardData['cardYear'], 'Card has expired']);
-    // }
   }
 
   return errors;
