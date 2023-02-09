@@ -51,4 +51,6 @@ Practiced with creating a brand new React project and combine it with Sass prepr
 ## Author
 
 - Github - [superpooperxx](https://github.com/superpooperxxx)
+- LinkedIn - [Kyrylo Haiduk](https://www.linkedin.com/in/kyrylo-haiduk/)
+- Telegram - [@haidukwork](https://t.me/haidukwork)
 - Frontend Mentor - [@superpooperxxx](https://www.frontendmentor.io/profile/superpooperxxx)
